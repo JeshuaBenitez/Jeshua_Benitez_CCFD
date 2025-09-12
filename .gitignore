@@ -1,0 +1,14 @@
+# Ignorar entornos virtuales
+ia-env/
+*.venv/
+__pycache__/
+*.pyc
+
+# Ignorar modelos pesados
+model/*.joblib
+
+# Ignorar archivos temporales/IDE
+*.log
+.DS_Store
+.vscode/
+.idea/
