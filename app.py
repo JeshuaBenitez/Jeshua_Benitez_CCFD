@@ -64,10 +64,17 @@ def health():
     return {"status": "ok"}
 
 # --- Endpoint de scoring ---
-@app.post("/score", response_model=OutputData)
-def score(data: InputData):
-    # dict() es correcto con pydantic v1 (como en tu requirements)
-    arr = np.array([v for _, v in data.dict().items()]).reshape(1, -1)
-    prob = model.predict_proba(arr)[:, -1]
-    # buena práctica: convertir a float nativo para JSON limpio
-    return {"score": float(prob[0])}
+@@app.post("/score")
+def score(item: CreditCardFeatures):
+    data = [list(item.dict().values())]
+    proba = model.predict_proba(data)[0]   # Probabilidades
+    prediction = int(model.predict(data)[0])  # Clase 0/1
+    
+    return {
+        "prediction": prediction,
+        "probability": {
+            "no_fraud": float(proba[0]),
+            "fraud": float(proba[1])
+        }
+    }
+
