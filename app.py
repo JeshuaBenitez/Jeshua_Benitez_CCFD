@@ -23,7 +23,7 @@ model = load(pathlib.Path("model/creditcard-v1.joblib"))
 
 # --- Esquemas ---
 # ajuste class InputData, ya que el dataset tiene 30 datos.
-class InputData(BaseModel):
+class CreditCardFeatures(BaseModel):
     Time: float
     V1: float
     V2: float
