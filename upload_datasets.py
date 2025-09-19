@@ -9,7 +9,7 @@ cloudinary.config(
   api_secret = "TcAjaZkC8LyDmIQOhiWGBS5zvFY"
 )
 
-# 📂 Archivos que quieres subir
+# Archivos que quieres subir
 datasets = [
     Path("data/creditcard_10k.csv"),
     Path("data/creditcard_5k.csv"),
