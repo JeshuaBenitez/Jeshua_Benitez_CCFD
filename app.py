@@ -64,7 +64,7 @@ def health():
     return {"status": "ok"}
 
 # --- Endpoint de scoring ---
-@@app.post("/score")
+@app.post("/score")
 def score(item: CreditCardFeatures):
     data = [list(item.dict().values())]
     proba = model.predict_proba(data)[0]   # Probabilidades
